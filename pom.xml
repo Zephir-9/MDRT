@@ -14,4 +14,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.2.1</version> <!-- Use the desired Spring version -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>6.2.1</version> <!-- Use the desired Spring version -->
+        </dependency>
+        <!-- Add other Spring dependencies as needed, e.g., spring-webmvc -->
+    </dependencies>
+
 </project>
