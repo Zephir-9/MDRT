@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/MDRT
-    username: postgres # указать корректный
-    password: password # указать корректный
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: Zephyr
+    password:
     driver-class-name: org.postgresql.Driver
 
   jpa:
