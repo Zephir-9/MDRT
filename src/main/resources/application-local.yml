@@ -19,7 +19,7 @@ spring:
         order_updates: true
 
   flyway:
-    enabled: true
+    enabled: false #временно отключено
     locations: classpath:db/migration
     baseline-on-migrate: true
 
