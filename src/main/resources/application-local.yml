@@ -2,32 +2,33 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: Zephyr
-    password:
+    password: admin
     driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
         jdbc:
           batch_size: 100
         order_inserts: true
         order_updates: true
 
-  flyway:
-    enabled: false #временно отключено
-    locations: classpath:db/migration
-    baseline-on-migrate: true
+  thymeleaf:
+    cache: false
 
   server:
     port: 8080
 
   logging:
     level:
-      com.example.masterdetail: DEBUG
+      com.example.MDRT: DEBUG
       org.hibernate.SQL: DEBUG
       org.hibernate.orm.jdbc.bind: TRACE

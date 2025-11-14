@@ -1,4 +1,4 @@
-package mdrp_test.service;
+package mdrt_test.service;
 
 public class CreateDocumentService {
 }

@@ -1,4 +1,4 @@
-package mdrp_test.rest;
+package mdrt_test.rest;
 
 public class CreateDocumentController {
 }
