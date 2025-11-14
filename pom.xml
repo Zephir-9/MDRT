@@ -51,12 +51,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Миграции -->
-        <!--<dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>9.22.3</version>
-        </dependency> -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.2</version>
+        </dependency>
 
         <!-- Утилиты -->
         <dependency>
