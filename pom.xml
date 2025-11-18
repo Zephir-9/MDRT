@@ -125,7 +125,7 @@
                                 <requestMappingMode>controller</requestMappingMode>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                                 <useSpringBoot3>true</useSpringBoot3>
-                                <useJakartaEe>false</useJakartaEe>
+                                <skipDefaultInterface>false</skipDefaultInterface>
                             </configOptions>
                             <templateDirectory>${project.basedir}/src/main/resources/openapi/templates</templateDirectory>
                         </configuration>

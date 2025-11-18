@@ -6,11 +6,13 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local server
+
 paths:
   /create_document:
     get:
+      operationId: addMaster
       responses:
-        '200':
+        200:
           description: Success
 
 components:
