@@ -7,5 +7,18 @@ servers:
   - url: http://localhost:8080
     description: Local server
 paths:
+  /create_document:
+    get:
+      responses:
+        '200':
+          description: Success
+
 components:
   schemas:
+    Test:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
