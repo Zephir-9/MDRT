@@ -4,9 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.example</groupId>
     <artifactId>MDRT</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.0</version>
+        <relativePath/>
+    </parent>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -16,16 +24,118 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>6.2.1</version> <!-- Use the desired Spring version -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>6.2.1</version> <!-- Use the desired Spring version -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- Add other Spring dependencies as needed, e.g., spring-webmvc -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.7</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <!-- Утилиты -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.18.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.6</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>mdrt_test.MdrtApplication</mainClass>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>6.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/../mdrt-api.yaml</inputSpec>
+                            <modelNameSuffix>DTO</modelNameSuffix>
+                            <generatorName>spring</generatorName>
+                            <typeMappings>
+                                <typeMapping>string+date-time=LocalDateTime</typeMapping>
+                                <typeMapping>string+date=LocalDate</typeMapping>
+                            </typeMappings>
+                            <schemaMappings>
+                                <mapping>LocalDateTime=java.time.LocalDateTime</mapping>
+                                <mapping>LocalDate=java.time.LocalDate</mapping>
+                            </schemaMappings>
+                            <importMappings>
+                                <importMapping>LocalDateTime=java.time.LocalDateTime</importMapping>
+                                <importMapping>LocalDate=java.time.LocalDate</importMapping>
+                            </importMappings>
+                            <configOptions>
+                                <dateLibrary>custom</dateLibrary>
+                                <basePackage>mdrt.openapi</basePackage>
+                                <invokerPackage>mdrt.openapi.api</invokerPackage>
+                                <apiPackage>mdrt.openapi.api</apiPackage>
+                                <modelPackage>mdrt.openapi.model</modelPackage>
+                                <configPackage>mdrt.openapi.config</configPackage>
+                                <interfaceOnly>true</interfaceOnly>
+                                <openApiNullable>true</openApiNullable>
+                                <!-- Generate the @RequestMapping annotation on the generated Api Controller Implementation. -->
+                                <requestMappingMode>controller</requestMappingMode>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <useJakartaEe>false</useJakartaEe>
+                            </configOptions>
+                            <templateDirectory>${project.basedir}/src/main/resources/openapi/templates</templateDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- включаем подстановку заполнителей (placeholder'ов)
+                 вроде таких: Hello @name@ -->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>
