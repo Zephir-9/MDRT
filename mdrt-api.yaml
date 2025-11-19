@@ -8,19 +8,60 @@ servers:
     description: Local server
 
 paths:
-  /create_document:
+  /create_document/add_document:
     get:
       operationId: addMaster
+      responses:
+        200:
+          description: Success
+  /create_document/delete_document:
+    get:
+      operationId: deleteMaster
+      responses:
+        200:
+          description: Success
+  /create_document/change_document:
+    get:
+      operationId: changeMaster
+      responses:
+        200:
+          description: Success
+  /create_document/add_specific:
+    get:
+      operationId: addDetail
+      responses:
+        200:
+          description: Success
+  /create_document/delete_specific:
+    get:
+      operationId: deleteDetail
+      responses:
+        200:
+          description: Success
+  /create_document/change_specific:
+    get:
+      operationId: changeDetail
       responses:
         200:
           description: Success
 
 components:
   schemas:
-    Test:
+    Document:
       type: object
       properties:
-        id:
+        docNumber:
+          type: integer
+        docDate:
+          type: string
+        Comment:
+          type: string
+    Specifications:
+      type: object
+      properties:
+        docId:
           type: integer
         name:
           type: string
+        amount:
+          type: integer
