@@ -12,9 +12,9 @@ paths:
     post:
       operationId: addMaster
       parameters:
-        - name:
+        - name: docId
           in: query
-          description:
+          description: id документа
           required: true
           schema:
             type: integer
@@ -28,6 +28,13 @@ paths:
   /create_document/delete_document:
     post:
       operationId: deleteMaster
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
@@ -38,6 +45,13 @@ paths:
   /create_document/change_document:
     post:
       operationId: changeMaster
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
@@ -48,6 +62,13 @@ paths:
   /create_document/add_specific:
     post:
       operationId: addDetail
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
@@ -58,6 +79,13 @@ paths:
   /create_document/delete_specific:
     post:
       operationId: deleteDetail
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
@@ -68,6 +96,13 @@ paths:
   /create_document/change_specific:
     post:
       operationId: changeDetail
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
