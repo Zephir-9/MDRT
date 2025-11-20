@@ -9,41 +9,72 @@ servers:
 
 paths:
   /create_document/add_document:
-    get:
+    post:
       operationId: addMaster
+      parameters:
+        - name:
+          in: query
+          description:
+          required: true
+          schema:
+            type: integer
       responses:
-        200:
+        201:
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
   /create_document/delete_document:
-    get:
+    post:
       operationId: deleteMaster
       responses:
-        200:
+        201:
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
   /create_document/change_document:
-    get:
+    post:
       operationId: changeMaster
       responses:
-        200:
+        201:
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
   /create_document/add_specific:
-    get:
+    post:
       operationId: addDetail
       responses:
-        200:
+        201:
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
   /create_document/delete_specific:
-    get:
+    post:
       operationId: deleteDetail
       responses:
-        200:
+        201:
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
   /create_document/change_specific:
-    get:
+    post:
       operationId: changeDetail
       responses:
-        200:
+        201:
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
 
 components:
   schemas:
@@ -65,3 +96,18 @@ components:
           type: string
         amount:
           type: integer
+
+    EditResult:
+      required:
+        - message
+        - success
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Успешность выполнения
+          example: false
+        message:
+          type: string
+          description: Сообщение
+      description: Результат работы
