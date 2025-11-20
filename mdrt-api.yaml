@@ -6,19 +6,143 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local server
+
 paths:
-  /create_document:
-    get:
+  /create_document/add_document:
+    post:
+      operationId: addMaster
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
       responses:
-        '200':
+        201:
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
+  /create_document/delete_document:
+    post:
+      operationId: deleteMaster
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
+  /create_document/change_document:
+    post:
+      operationId: changeMaster
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
+  /create_document/add_specific:
+    post:
+      operationId: addDetail
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
+  /create_document/delete_specific:
+    post:
+      operationId: deleteDetail
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
+  /create_document/change_specific:
+    post:
+      operationId: changeDetail
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditResult'
 
 components:
   schemas:
-    Test:
+    Document:
       type: object
       properties:
-        id:
+        docNumber:
+          type: integer
+        docDate:
+          type: string
+        Comment:
+          type: string
+    Specifications:
+      type: object
+      properties:
+        docId:
           type: integer
         name:
           type: string
+        amount:
+          type: integer
+
+    EditResult:
+      required:
+        - message
+        - success
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Успешность выполнения
+          example: false
+        message:
+          type: string
+          description: Сообщение
+      description: Результат работы
