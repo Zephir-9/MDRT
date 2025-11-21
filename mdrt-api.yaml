@@ -18,6 +18,18 @@ paths:
           required: true
           schema:
             type: integer
+        - name: docDate
+          in: query
+          description: Дата документа
+          required: true
+          schema:
+            type: string
+        - name: comment
+          in: query
+          description: Комментарий
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
@@ -52,6 +64,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: newDocId
+          in: query
+          description: Новый номер
+          required: true
+          schema:
+            type: integer
+        - name: docDate
+          in: query
+          description: Новая дата документа
+          required: true
+          schema:
+            type: string
+        - name: comment
+          in: query
+          description: Новый комментарий
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
@@ -66,6 +96,18 @@ paths:
         - name: docId
           in: query
           description: id документа
+          required: true
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Название специфики
+          required: true
+          schema:
+            type: string
+        - name: ammount
+          in: query
+          description: Сумма специфики
           required: true
           schema:
             type: integer
@@ -86,6 +128,12 @@ paths:
           required: true
           schema:
             type: integer
+        - name: name
+          in: query
+          description: Название специфики
+          required: true
+          schema:
+            type: string
       responses:
         201:
           description: Success
@@ -100,6 +148,24 @@ paths:
         - name: docId
           in: query
           description: id документа
+          required: true
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Название специфики
+          required: true
+          schema:
+            type: string
+        - name: newName
+          in: query
+          description: Новое название специфики
+          required: true
+          schema:
+            type: string
+        - name: ammount
+          in: query
+          description: Новая сумма специфики
           required: true
           schema:
             type: integer
