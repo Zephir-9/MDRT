@@ -10,7 +10,7 @@ public class CreateDocumentService {
     @Autowired
     CreateDocumentMapper createDocumentMapper;
 
-    public EditResultDTO addMaster(Integer docId, String docDate, Integer comment) {
+    public EditResultDTO addMaster(String docId, String docDate, Integer comment) {
         if (createDocumentMapper.getDocumentById(docId) > 0) {
             return new EditResultDTO(false, "Документ с номером {" + docId + "} уже существует");
         } else {
@@ -19,7 +19,7 @@ public class CreateDocumentService {
         }
     }
 
-    public EditResultDTO changeMaster(Integer docId, Integer newDocId, String docDate, Integer comment) {
+    public EditResultDTO changeMaster(String docId, String newDocId, String docDate, Integer comment) {
         if (docId.equals(newDocId)) {
             createDocumentMapper.changeMaster(docId, newDocId, docDate, comment);
             return new EditResultDTO(true, "Документ с номером: " + docId + " обновлён");
@@ -36,7 +36,7 @@ public class CreateDocumentService {
         }
     }
 
-    public EditResultDTO deleteMaster(Integer docId) {
+    public EditResultDTO deleteMaster(String docId) {
         if (createDocumentMapper.getDocumentById(docId) == 0) {
             return new EditResultDTO(false, "Документа с номером {" + docId +"} не существует");
         } else {

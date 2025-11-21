@@ -8,18 +8,19 @@ import org.springframework.stereotype.Component;
 public interface CreateDocumentMapper {
     @Insert("""
             """)
-    void addMaster(Integer docId, String docDate, Integer comment);
+    void addMaster(String docId, String docDate, Integer comment);
 
     @Update("""
             """)
-    void changeMaster(Integer docId, Integer newDocId, String docDate, Integer comment);
+    void changeMaster(String docId, String newDocId, String docDate, Integer comment);
 
     @Delete("""
             """)
-    void deleteMaster(Integer docId);
+    void deleteMaster(String docId);
 
     @Select("""
-            where id = #{docId}
+            select count(*) from docs.master
+            where doc_number = #{docId}
             """)
-    Integer getDocumentById(Integer docId);
+    Integer getDocumentById(String docId);
 }

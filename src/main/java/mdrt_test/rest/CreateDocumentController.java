@@ -13,17 +13,17 @@ public class CreateDocumentController implements CreateDocumentApi {
     CreateDocumentService createDocumentService;
 
     @Override
-    public ResponseEntity<EditResultDTO> addMaster(Integer docId, String docDate, Integer comment) {
+    public ResponseEntity<EditResultDTO> addMaster(String docId, String docDate, Integer comment) {
         return ResponseEntity.ok(createDocumentService.addMaster(docId, docDate, comment));
     }
 
     @Override
-    public ResponseEntity<EditResultDTO> changeMaster(Integer docId, Integer newDocId, String docDate, Integer comment) {
+    public ResponseEntity<EditResultDTO> changeMaster(String docId, String newDocId, String docDate, Integer comment) {
         return ResponseEntity.ok(createDocumentService.changeMaster(docId, newDocId, docDate, comment));
     }
 
     @Override
-    public ResponseEntity<EditResultDTO> deleteMaster(Integer docId) {
+    public ResponseEntity<EditResultDTO> deleteMaster(String docId) {
         return ResponseEntity.ok(createDocumentService.deleteMaster(docId));
     }
 
