@@ -69,6 +69,18 @@ paths:
           required: true
           schema:
             type: integer
+        - name: name
+          in: query
+          description: Название специфики
+          required: true
+          schema:
+            type: string
+        - name: ammount
+          in: query
+          description: Сумма специфики
+          required: true
+          schema:
+            type: integer
       responses:
         201:
           description: Success
@@ -86,6 +98,12 @@ paths:
           required: true
           schema:
             type: integer
+        - name: name
+          in: query
+          description: Название специфики
+          required: true
+          schema:
+            type: string
       responses:
         201:
           description: Success
@@ -100,6 +118,24 @@ paths:
         - name: docId
           in: query
           description: id документа
+          required: true
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Название специфики
+          required: true
+          schema:
+            type: string
+        - name: newName
+          in: query
+          description: Новое название специфики
+          required: true
+          schema:
+            type: string
+        - name: ammount
+          in: query
+          description: Новая сумма специфики
           required: true
           schema:
             type: integer
