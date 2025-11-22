@@ -21,13 +21,13 @@ paths:
         - name: docDate
           in: query
           description: Дата документа
-          required: true
+          required: false
           schema:
             type: string
         - name: comment
           in: query
           description: Комментарий
-          required: true
+          required: false
           schema:
             type: integer
       responses:
@@ -73,13 +73,13 @@ paths:
         - name: docDate
           in: query
           description: Новая дата документа
-          required: true
+          required: false
           schema:
             type: string
         - name: comment
           in: query
           description: Новый комментарий
-          required: true
+          required: false
           schema:
             type: integer
       responses:
