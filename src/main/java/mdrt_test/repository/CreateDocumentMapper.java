@@ -59,4 +59,12 @@ public interface CreateDocumentMapper {
             where doc_number = #{docId} and item_name = #{name};
             """)
     int getSpecificByName(String docId, String name);
+
+    @Insert("""
+            INSERT INTO docs.mdrt_log
+            (table_name, error_code, message, record_data)
+            VALUES
+            (#{tableName}, #{errorCode}, #{message}, #{recordData})
+            """)
+    void documentLog(String tableName, Integer errorCode, String message, String recordData);
 }
