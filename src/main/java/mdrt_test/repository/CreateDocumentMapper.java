@@ -10,7 +10,7 @@ public interface CreateDocumentMapper {
             insert into docs.master
             (doc_number, doc_date, comment)
             values
-            (#{docId}, #{docDate}, #{comment})
+            (#{docId}, #{docDate}, #{comment});
             """)
     void addMaster(String docId, String docDate, Integer comment);
 
@@ -23,13 +23,40 @@ public interface CreateDocumentMapper {
 
     @Delete("""
             delete from docs.master
-            where doc_number = #{docId}
+            where doc_number = #{docId};
             """)
     void deleteMaster(String docId);
 
     @Select("""
             select count(*) from docs.master
-            where doc_number = #{docId}
+            where doc_number = #{docId};
             """)
     Integer getDocumentById(String docId);
+
+    @Insert("""
+            insert into docs.detail
+            (doc_number, item_name, item_amount)
+            values
+            (#{docId}, #{name}, #{ammount});
+            """)
+    void addDetail(String docId, String name, Integer ammount);
+
+    @Update("""
+            update docs.detail
+            set item_name = #{newName}, item_amount = #{ammount}
+            where doc_number = #{docId} and item_name = #{name};
+            """)
+    void changeDetail(String docId, String name, String newName, Integer ammount);
+
+    @Delete("""
+            delete from docs.detail
+            where doc_number = #{docId} and item_name = #{name};
+            """)
+    void deleteDetail(String docId, String name);
+
+    @Select("""
+            select count(*) from docs.detail
+            where doc_number = #{docId} and item_name = #{name};
+            """)
+    int getSpecificByName(String docId, String name);
 }
