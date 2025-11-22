@@ -17,17 +17,17 @@ paths:
           description: id документа
           required: true
           schema:
-            type: integer
+            type: string
         - name: docDate
           in: query
           description: Дата документа
-          required: true
+          required: false
           schema:
             type: string
         - name: comment
           in: query
           description: Комментарий
-          required: true
+          required: false
           schema:
             type: integer
       responses:
@@ -46,7 +46,7 @@ paths:
           description: id документа
           required: true
           schema:
-            type: integer
+            type: string
       responses:
         201:
           description: Success
@@ -63,23 +63,23 @@ paths:
           description: id документа
           required: true
           schema:
-            type: integer
+            type: string
         - name: newDocId
           in: query
           description: Новый номер
           required: true
           schema:
-            type: integer
+            type: string
         - name: docDate
           in: query
           description: Новая дата документа
-          required: true
+          required: false
           schema:
             type: string
         - name: comment
           in: query
           description: Новый комментарий
-          required: true
+          required: false
           schema:
             type: integer
       responses:
@@ -98,7 +98,7 @@ paths:
           description: id документа
           required: true
           schema:
-            type: integer
+            type: string
         - name: name
           in: query
           description: Название специфики
@@ -127,7 +127,7 @@ paths:
           description: id документа
           required: true
           schema:
-            type: integer
+            type: string
         - name: name
           in: query
           description: Название специфики
@@ -150,7 +150,7 @@ paths:
           description: id документа
           required: true
           schema:
-            type: integer
+            type: string
         - name: name
           in: query
           description: Название специфики
@@ -183,7 +183,7 @@ components:
       type: object
       properties:
         docNumber:
-          type: integer
+          type: string
         docDate:
           type: string
         Comment:
@@ -191,8 +191,8 @@ components:
     Specifications:
       type: object
       properties:
-        docId:
-          type: integer
+        docNumber:
+          type: string
         name:
           type: string
         amount:
