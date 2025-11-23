@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: Тестовый проект
 servers:
-  - url: http://localhost:8080
+  - url: "mdrt-test/api"
     description: Local server
 
 paths:
