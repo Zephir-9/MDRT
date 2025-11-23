@@ -33,12 +33,12 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.3.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
+        <!--
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-data-jpa</artifactId>
+                </dependency>
+                -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
+            <version>3.0.3</version>
         </dependency>
 
         <!-- Утилиты -->
@@ -145,5 +145,19 @@
             </resource>
         </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev_1</id>
+            <properties>
+                <dbdriver>org.postgresql.Driver</dbdriver>
+                <dburl>jdbc:postgresql://localhost:5432/MDRT</dburl>
+                <dblogin>Zephyr</dblogin>
+                <dbpassword>admin</dbpassword>
+                <spring.jpa.database-platform>org.hibernate.dialect.PostgreSQLDialect</spring.jpa.database-platform>
+                <spring.profiles.active>dev_1</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

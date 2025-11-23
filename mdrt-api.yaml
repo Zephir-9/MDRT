@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: Тестовый проект
 servers:
-  - url: http://localhost:8080
+  - url: "mdrt-test/api"
     description: Local server
 
 paths:
@@ -20,16 +20,17 @@ paths:
             type: string
         - name: docDate
           in: query
-          description: Дата документа
+          description: Дата документа. Формат - гггг-мм-дд
           required: false
           schema:
             type: string
+            format: date
         - name: comment
           in: query
           description: Комментарий
           required: false
           schema:
-            type: integer
+            type: string
       responses:
         201:
           description: Success
@@ -72,16 +73,17 @@ paths:
             type: string
         - name: docDate
           in: query
-          description: Новая дата документа
+          description: Новая дата документа. Формат - гггг-мм-дд
           required: false
           schema:
             type: string
+            format: date
         - name: comment
           in: query
           description: Новый комментарий
           required: false
           schema:
-            type: integer
+            type: string
       responses:
         201:
           description: Success
@@ -186,6 +188,7 @@ components:
           type: string
         docDate:
           type: string
+          format: date
         Comment:
           type: string
     Specifications:

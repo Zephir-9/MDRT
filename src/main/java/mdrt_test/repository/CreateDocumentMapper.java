@@ -3,6 +3,8 @@ package mdrt_test.repository;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 @Mapper
 public interface CreateDocumentMapper {
@@ -12,14 +14,14 @@ public interface CreateDocumentMapper {
             values
             (#{docId}, #{docDate}, #{comment});
             """)
-    void addMaster(String docId, String docDate, Integer comment);
+    void addMaster(String docId, LocalDate docDate, String comment);
 
     @Update("""
             update docs.master
             set doc_number = #{newDocId}, doc_date = #{docDate}, comment = #{comment}
             where doc_number = #{docId};
             """)
-    void changeMaster(String docId, String newDocId, String docDate, Integer comment);
+    void changeMaster(String docId, String newDocId, LocalDate docDate, String comment);
 
     @Delete("""
             delete from docs.master
@@ -62,7 +64,7 @@ public interface CreateDocumentMapper {
 
     @Insert("""
             INSERT INTO docs.mdrt_log
-            (table_name, error_code, message, record_data)
+            (table_name, success, message, record_data)
             VALUES
             (#{tableName}, #{errorCode}, #{message}, #{recordData})
             """)
