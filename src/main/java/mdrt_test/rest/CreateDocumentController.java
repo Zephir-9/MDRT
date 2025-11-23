@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDate;
+
 @Controller
 public class CreateDocumentController implements CreateDocumentApi {
     @Autowired
@@ -18,7 +20,7 @@ public class CreateDocumentController implements CreateDocumentApi {
     }
 
     @Override
-    public ResponseEntity<EditResultDTO> addMaster(String docId, String docDate, Integer comment) {
+    public ResponseEntity<EditResultDTO> addMaster(String docId, LocalDate docDate, Integer comment) {
         return ResponseEntity.ok(createDocumentService.addMaster(docId, docDate, comment));
     }
 
@@ -28,7 +30,7 @@ public class CreateDocumentController implements CreateDocumentApi {
     }
 
     @Override
-    public ResponseEntity<EditResultDTO> changeMaster(String docId, String newDocId, String docDate, Integer comment) {
+    public ResponseEntity<EditResultDTO> changeMaster(String docId, String newDocId, LocalDate docDate, Integer comment) {
         return ResponseEntity.ok(createDocumentService.changeMaster(docId, newDocId, docDate, comment));
     }
 

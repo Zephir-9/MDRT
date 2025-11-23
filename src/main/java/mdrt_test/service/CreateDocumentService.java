@@ -5,12 +5,14 @@ import mdrt_test.repository.CreateDocumentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class CreateDocumentService {
     @Autowired
     CreateDocumentMapper createDocumentMapper;
 
-    public EditResultDTO addMaster(String docId, String docDate, Integer comment) {
+    public EditResultDTO addMaster(String docId, LocalDate docDate, Integer comment) {
         if (createDocumentMapper.getDocumentById(docId) > 0) {
             createDocumentMapper.documentLog("Master", 1, "Попытка создания дупликата",
                     "{Номер документа: " + docId + ", Дата документа: " + docDate + ", Примечание: " + comment + "}");
@@ -25,7 +27,7 @@ public class CreateDocumentService {
         }
     }
 
-    public EditResultDTO changeMaster(String docId, String newDocId, String docDate, Integer comment) {
+    public EditResultDTO changeMaster(String docId, String newDocId, LocalDate docDate, Integer comment) {
         if (createDocumentMapper.getDocumentById(docId) == 0) {
             createDocumentMapper.changeMaster(docId, newDocId, docDate, comment);
             createDocumentMapper.documentLog("Master", 1, "Документ ещё не создан",

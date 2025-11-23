@@ -20,10 +20,11 @@ paths:
             type: string
         - name: docDate
           in: query
-          description: Дата документа
+          description: Дата документа. Формат - гггг.мм.дд
           required: false
           schema:
             type: string
+            format: date
         - name: comment
           in: query
           description: Комментарий
@@ -72,10 +73,11 @@ paths:
             type: string
         - name: docDate
           in: query
-          description: Новая дата документа
+          description: Новая дата документа. Формат - гггг.мм.дд
           required: false
           schema:
             type: string
+            format: date
         - name: comment
           in: query
           description: Новый комментарий
@@ -186,6 +188,7 @@ components:
           type: string
         docDate:
           type: string
+          format: date
         Comment:
           type: string
     Specifications:
