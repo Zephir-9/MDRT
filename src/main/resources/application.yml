@@ -1,0 +1,8 @@
+server:
+  port: 9191
+  servlet:
+    context-path: /mdrt-test/api
+
+spring:
+  application:
+    name: MDRT
