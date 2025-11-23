@@ -14,14 +14,14 @@ public interface CreateDocumentMapper {
             values
             (#{docId}, #{docDate}, #{comment});
             """)
-    void addMaster(String docId, LocalDate docDate, Integer comment);
+    void addMaster(String docId, LocalDate docDate, String comment);
 
     @Update("""
             update docs.master
             set doc_number = #{newDocId}, doc_date = #{docDate}, comment = #{comment}
             where doc_number = #{docId};
             """)
-    void changeMaster(String docId, String newDocId, LocalDate docDate, Integer comment);
+    void changeMaster(String docId, String newDocId, LocalDate docDate, String comment);
 
     @Delete("""
             delete from docs.master

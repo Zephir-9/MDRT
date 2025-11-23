@@ -20,7 +20,7 @@ public class CreateDocumentController implements CreateDocumentApi {
     }
 
     @Override
-    public ResponseEntity<EditResultDTO> addMaster(String docId, LocalDate docDate, Integer comment) {
+    public ResponseEntity<EditResultDTO> addMaster(String docId, LocalDate docDate, String comment) {
         return ResponseEntity.ok(createDocumentService.addMaster(docId, docDate, comment));
     }
 
@@ -30,7 +30,7 @@ public class CreateDocumentController implements CreateDocumentApi {
     }
 
     @Override
-    public ResponseEntity<EditResultDTO> changeMaster(String docId, String newDocId, LocalDate docDate, Integer comment) {
+    public ResponseEntity<EditResultDTO> changeMaster(String docId, String newDocId, LocalDate docDate, String comment) {
         return ResponseEntity.ok(createDocumentService.changeMaster(docId, newDocId, docDate, comment));
     }
 
