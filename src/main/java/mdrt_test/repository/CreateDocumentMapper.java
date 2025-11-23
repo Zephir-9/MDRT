@@ -64,7 +64,7 @@ public interface CreateDocumentMapper {
 
     @Insert("""
             INSERT INTO docs.mdrt_log
-            (table_name, error_code, message, record_data)
+            (table_name, success, message, record_data)
             VALUES
             (#{tableName}, #{errorCode}, #{message}, #{recordData})
             """)
