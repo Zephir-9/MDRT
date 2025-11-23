@@ -20,7 +20,7 @@ paths:
             type: string
         - name: docDate
           in: query
-          description: Дата документа. Формат - гггг.мм.дд
+          description: Дата документа. Формат - гггг-мм-дд
           required: false
           schema:
             type: string
@@ -30,7 +30,7 @@ paths:
           description: Комментарий
           required: false
           schema:
-            type: integer
+            type: string
       responses:
         201:
           description: Success
@@ -73,7 +73,7 @@ paths:
             type: string
         - name: docDate
           in: query
-          description: Новая дата документа. Формат - гггг.мм.дд
+          description: Новая дата документа. Формат - гггг-мм-дд
           required: false
           schema:
             type: string
@@ -83,7 +83,7 @@ paths:
           description: Новый комментарий
           required: false
           schema:
-            type: integer
+            type: string
       responses:
         201:
           description: Success
