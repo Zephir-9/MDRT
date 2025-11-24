@@ -1,13 +1,17 @@
 package mdrt_test.rest;
 
 import mdrt.openapi.api.CreateDocumentApi;
+import mdrt.openapi.model.DocumentDTO;
 import mdrt.openapi.model.EditResultDTO;
+import mdrt.openapi.model.LogMDDTO;
+import mdrt.openapi.model.SpecificationsDTO;
 import mdrt_test.service.CreateDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class CreateDocumentController implements CreateDocumentApi {
@@ -42,6 +46,21 @@ public class CreateDocumentController implements CreateDocumentApi {
     @Override
     public ResponseEntity<EditResultDTO> deleteMaster(String docId) {
         return ResponseEntity.ok(createDocumentService.deleteMaster(docId));
+    }
+
+    @Override
+    public ResponseEntity<List<SpecificationsDTO>> getDetail(String docId) {
+        return ResponseEntity.ok(createDocumentService.getDetail(docId));
+    }
+
+    @Override
+    public ResponseEntity<List<LogMDDTO>> getLog() {
+        return ResponseEntity.ok(createDocumentService.getLog());
+    }
+
+    @Override
+    public ResponseEntity<List<DocumentDTO>> getMaster() {
+        return ResponseEntity.ok(createDocumentService.getMaster());
     }
 
 }

@@ -1,11 +1,15 @@
 package mdrt_test.service;
 
+import mdrt.openapi.model.DocumentDTO;
 import mdrt.openapi.model.EditResultDTO;
+import mdrt.openapi.model.LogMDDTO;
+import mdrt.openapi.model.SpecificationsDTO;
 import mdrt_test.repository.CreateDocumentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class CreateDocumentService {
@@ -108,5 +112,17 @@ public class CreateDocumentService {
                     "{Номер документа: " + docId + ", Имя спецификации: " + name + "}");
             return new EditResultDTO(true, "Спецификация документа {" + docId + "} с именем {" + name + "} удалена");
         }
+    }
+
+    public List<DocumentDTO> getMaster() {
+        return createDocumentMapper.getMaster();
+    }
+
+    public List<SpecificationsDTO> getDetail(String docId) {
+        return createDocumentMapper.getDetail(docId);
+    }
+
+    public List<LogMDDTO> getLog() {
+        return createDocumentMapper.getLog();
     }
 }

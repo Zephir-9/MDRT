@@ -1,9 +1,13 @@
 package mdrt_test.repository;
 
+import mdrt.openapi.model.DocumentDTO;
+import mdrt.openapi.model.LogMDDTO;
+import mdrt.openapi.model.SpecificationsDTO;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 @Mapper
@@ -69,4 +73,32 @@ public interface CreateDocumentMapper {
             (#{tableName}, #{errorCode}, #{message}, #{recordData})
             """)
     void documentLog(String tableName, Integer errorCode, String message, String recordData);
+
+    @Select("""
+            select master.doc_number docNumber,
+            master.doc_date docDate,
+            master.total_amount totalAmount,
+            master."comment" Comment
+            from docs.master;
+            """)
+    List<DocumentDTO> getMaster();
+
+    @Select("""
+            select detail.doc_number docNumber,
+            detail.item_name name,
+            detail.item_amount amount
+            from docs.detail;
+            """)
+    List<SpecificationsDTO> getDetail(String docId);
+
+    @Select("""
+            select mdrt_log.table_name tableName,
+            mdrt_log.success succsess,
+            mdrt_log.message message,
+            mdrt_log."timestamp" timestamp,
+            mdrt_log.record_data recordData
+            from docs.mdrt_log
+            order by id desc;
+            """)
+    List<LogMDDTO> getLog();
 }
