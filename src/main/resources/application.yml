@@ -6,3 +6,8 @@ server:
 spring:
   application:
     name: MDRT
+  web:
+    resources:
+      static-locations: classpath:/static/
+    mvc:
+      static-path-pattern: /**

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Details Redactor Test</title>
+    <link rel="stylesheet" href="/mdrt-test/api/style/styles.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Master Details Redactor Test</h1>
+        <p>Система управления документами и спецификациями</p>
+    </header>
+
+    <div class="main-content">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="master">Документы</button>
+            <button class="tab-button" data-tab="detail">Спецификации</button>
+            <button class="tab-button" data-tab="logs">Логи операций</button>
+        </div>
+
+        <!-- Вкладка документов -->
+        <div id="master" class="tab-content active">
+            <div class="section-header">
+                <h2>Список документов</h2>
+                <button id="refreshMaster" class="btn btn-secondary">Обновить список</button>
+            </div>
+            <div id="masterList" class="data-list">
+                <!-- Список документов -->
+            </div>
+
+            <div class="operations">
+                <div class="operation-card">
+                    <h3>Добавить документ</h3>
+                    <form id="addMasterForm" class="operation-form">
+                        <div class="form-group">
+                            <label for="docId">Номер документа*</label>
+                            <input type="text" id="docId" name="docId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="docDate">Дата документа</label>
+                            <input type="date" id="docDate" name="docDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Комментарий</label>
+                            <textarea id="comment" name="comment" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Добавить документ</button>
+                    </form>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Изменить документ</h3>
+                    <form id="changeMasterForm" class="operation-form">
+                        <div class="form-group">
+                            <label for="changeDocId">Текущий номер документа*</label>
+                            <input type="text" id="changeDocId" name="docId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newDocId">Новый номер документа*</label>
+                            <input type="text" id="newDocId" name="newDocId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="changeDocDate">Новая дата документа</label>
+                            <input type="date" id="changeDocDate" name="docDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="changeComment">Новый комментарий</label>
+                            <textarea id="changeComment" name="comment" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Изменить документ</button>
+                    </form>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Удалить документ</h3>
+                    <form id="deleteMasterForm" class="operation-form">
+                        <div class="form-group">
+                            <label for="deleteDocId">Номер документа*</label>
+                            <input type="text" id="deleteDocId" name="docId" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Удалить документ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка спецификаций -->
+        <div id="detail" class="tab-content">
+            <div class="section-header">
+                <h2>Список спецификаций</h2>
+                <div class="filter-group">
+                    <input type="text" id="filterDocId" placeholder="Номер документа">
+                    <button id="refreshDetail" class="btn btn-secondary">Обновить список</button>
+                </div>
+            </div>
+            <div id="detailList" class="data-list">
+                <!-- Список спецификаций -->
+            </div>
+
+            <div class="operations">
+                <div class="operation-card">
+                    <h3>Добавить спецификацию</h3>
+                    <form id="addDetailForm" class="operation-form">
+                        <div class="form-group">
+                            <label for="detailDocId">Номер документа*</label>
+                            <input type="text" id="detailDocId" name="docId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Название спецификации*</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ammount">Сумма спецификации*</label>
+                            <input type="number" id="ammount" name="ammount" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Добавить спецификацию</button>
+                    </form>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Изменить спецификацию</h3>
+                    <form id="changeDetailForm" class="operation-form">
+                        <div class="form-group">
+                            <label for="changeDetailDocId">Номер документа*</label>
+                            <input type="text" id="changeDetailDocId" name="docId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="changeName">Текущее название спецификации*</label>
+                            <input type="text" id="changeName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newName">Новое название спецификации*</label>
+                            <input type="text" id="newName" name="newName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="changeAmmount">Новая сумма спецификации*</label>
+                            <input type="number" id="changeAmmount" name="ammount" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Изменить спецификацию</button>
+                    </form>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Удалить спецификацию</h3>
+                    <form id="deleteDetailForm" class="operation-form">
+                        <div class="form-group">
+                            <label for="deleteDetailDocId">Номер документа*</label>
+                            <input type="text" id="deleteDetailDocId" name="docId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deleteName">Название спецификации*</label>
+                            <input type="text" id="deleteName" name="name" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Удалить спецификацию</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка логов -->
+        <div id="logs" class="tab-content">
+            <div class="logs-container">
+                <div class="section-header">
+                    <h2>Логи операций</h2>
+                    <button id="refreshLogs" class="btn btn-secondary">Обновить логи</button>
+                </div>
+                <div id="logsList" class="logs-list">
+                    <!-- Логи операций -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification hidden">
+        <span id="notificationMessage"></span>
+        <button id="closeNotification" class="close-btn">&times;</button>
+    </div>
+</div>
+
+<script src="/mdrt-test/api/js/script.js"></script>
+</body>
+</html>

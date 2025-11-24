@@ -178,6 +178,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EditResult'
+  /create_document/get_documents:
+    get:
+      operationId: getMaster
+      responses:
+        200:
+          description: Список документов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document'
+  /create_document/get_specific:
+    get:
+      operationId: getDetail
+      parameters:
+        - name: docId
+          in: query
+          description: id документа
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Список спецификаций документа
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Specifications'
+  /create_document/get_logs:
+    get:
+      operationId: getLog
+      responses:
+        200:
+          description: Логи оперций с документами
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LogMD'
 
 components:
   schemas:
@@ -185,21 +228,52 @@ components:
       type: object
       properties:
         docNumber:
+          description: Номер документа
           type: string
         docDate:
+          description: Дата документа
           type: string
           format: date
+        totalAmount:
+          description: Сумма документа
+          type: integer
         Comment:
+          description: Примечание
           type: string
+
     Specifications:
       type: object
       properties:
         docNumber:
+          description: Номер документа
           type: string
         name:
+          description: Имя спецификации
           type: string
         amount:
+          description: Сумма спецификации
           type: integer
+
+    LogMD:
+      type: object
+      properties:
+        tableName:
+          description: Название таблицы БД
+          type: string
+        succsess:
+          description: Код ошибки
+          type: integer
+        message:
+          description: Сообщение
+          type: string
+        timestamp:
+          description: Время записи
+          type: string
+          format: date-time
+        recordData:
+          description: Параметры операции
+          type: string
+
 
     EditResult:
       required:
