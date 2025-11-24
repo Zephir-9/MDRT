@@ -88,7 +88,7 @@ public interface CreateDocumentMapper {
             detail.item_name name,
             detail.item_amount amount
             from docs.detail
-            where detail.doc_number = #{docId}
+            where detail.doc_number = #{docId};
             """)
     List<SpecificationsDTO> getDetail(String docId);
 
