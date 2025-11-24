@@ -32,7 +32,7 @@ public class CreateDocumentService {
                     "{Номер документа: " + docId + ", Дата документа: " + docDate + ", Примечание: " + comment + "}");
             return new EditResultDTO(false, "Документа с номером {" + docId +"} не существует");
         }
-        else if (createDocumentMapper.getDocumentById(newDocId) > 0) {
+        else if (createDocumentMapper.getDocumentById(newDocId) > 0 && !docId.equals(newDocId)) {
             createDocumentMapper.documentLog("Master", 1, "Попытка дублирования номера",
                     "{Номер документа: " + docId + ", Дата документа: " + docDate + ", Примечание: " + comment + "}");
             return new EditResultDTO(false, "Номер {" + newDocId + "} уже используется другим документом");
